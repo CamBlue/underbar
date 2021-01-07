@@ -38,7 +38,7 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
-
+      return n === undefined ? array[array.length - 1] : array.slice(0, n);
   };
 
   // Call iterator(value, key, collection) for each element of collection.
@@ -51,6 +51,10 @@
     for (var i = 0; i < collection.length; i++) {
       iterator(collection[i]);
     };
+  } else {
+    for(let key in collection){
+      iterator(collection[key]);
+    }
   }
   };
 
@@ -73,19 +77,38 @@
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
-
+        let newArr = [];
+        for(let i = 0; i <= collection.length; i++){
+         if(test(collection, collection[i], test)){
+            newArr.push(collection[i]);
+         }
+          
+        }
+        return newArr;
   };
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
-
+        let newArr = [];
+       for(let i = 0; i <= collection.length; i++){
+         if(!test(collection, collection[i], test)){
+           newArr.push[collection[i]];
+         }
+       }
+       return newArr;
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
-
+      let newArr1 = [];
+      for(let i = 0; i <= array.length; i++){
+          let uni = array[i];
+          if(array[i] === uni){
+            
+          }
+      }
   };
 
 
@@ -94,7 +117,11 @@
     // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
-
+      let newArr = [];
+      each(collection, function(e, iterator, collection){
+        newArr.push(iterator(e, iterator, collection));
+      })
+      return newArr;
   };
 
   /*
